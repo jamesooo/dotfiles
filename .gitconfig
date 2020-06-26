@@ -1,0 +1,14 @@
+[help]
+	autocorrect = 1
+[push]
+	default = origin
+[alias]
+	st = status
+	co = checkout
+	ci = commit
+	br = branch
+	df = diff
+	lg = log
+	restart = reset --hard HEAD
+	undo-commit = reset --soft HEAD^
+
