@@ -42,9 +42,14 @@ This function should only modify configuration layer settings."
      docker
      emacs-lisp
      git
-     go
+     (go :variables
+         godoc-at-point-function 'godoc-gogetdoc
+         go-use-golangci-lint t
+         go-format-before-save t
+         go-tab-width 2
+         )
      helm
-     ibuffer
+     (ibuffer :variables ibuffer-group-buffers-by 'projects)
      java
      javascript
      lsp
@@ -52,10 +57,11 @@ This function should only modify configuration layer settings."
      multiple-cursors
      org
      puppet
-     python
+     (python :variables python-tab-width 2)
      restclient
      ruby
      rust
+     (shell :variables close-window-with-terminal t)
      shell-scripts
      spell-checking
      sql
@@ -65,6 +71,7 @@ This function should only modify configuration layer settings."
      vagrant
      version-control
      yaml
+     games
      )
 
    ;; List of additional packages that will be installed without being
@@ -383,7 +390,7 @@ It should only modify the values of Spacemacs settings."
    ;;   :size-limit-kb 1000)
    ;; When used in a plist, `visual' takes precedence over `relative'.
    ;; (default nil)
-   dotspacemacs-line-numbers nil
+   dotspacemacs-line-numbers `relative
 
    ;; Code folding method. Possible values are `evil' and `origami'.
    ;; (default 'evil)
@@ -498,6 +505,7 @@ This function is called at the very end of Spacemacs startup, after layer
 configuration.
 Put your configuration code here, except for variables that should be set
 before packages are loaded."
+  (add-hook 'term-mode-hook 'spacemacs/toggle-truncate-lines-on)
   )
 
 ;; Do not write anything past this comment. This is where Emacs will
@@ -515,14 +523,6 @@ This function is called at the very end of Spacemacs initialization."
  '(package-selected-packages
    (quote
     (yapfify stickyfunc-enhance pytest pyenv-mode py-isort pippel pipenv pyvenv pip-requirements lsp-python-ms live-py-mode importmagic epc ctable concurrent deferred helm-pydoc helm-gtags helm-cscope xcscope ggtags dap-mode lsp-treemacs bui lsp-mode markdown-mode dash-functional cython-mode counsel-gtags counsel swiper ivy company-anaconda company blacken anaconda-mode pythonic ws-butler writeroom-mode winum which-key volatile-highlights vi-tilde-fringe uuidgen use-package treemacs-projectile treemacs-persp treemacs-icons-dired treemacs-evil toc-org symon symbol-overlay string-inflection spaceline-all-the-icons restart-emacs request rainbow-delimiters popwin pcre2el password-generator paradox overseer org-superstar open-junk-file nameless move-text macrostep lorem-ipsum link-hint indent-guide hybrid-mode hungry-delete hl-todo highlight-parentheses highlight-numbers highlight-indentation helm-xref helm-themes helm-swoop helm-purpose helm-projectile helm-mode-manager helm-make helm-ls-git helm-flx helm-descbinds helm-ag google-translate golden-ratio font-lock+ flycheck-package flycheck-elsa flx-ido fill-column-indicator fancy-battery eyebrowse expand-region evil-visualstar evil-visual-mark-mode evil-unimpaired evil-tutor evil-textobj-line evil-surround evil-numbers evil-nerd-commenter evil-mc evil-matchit evil-lisp-state evil-lion evil-indent-plus evil-iedit-state evil-goggles evil-exchange evil-escape evil-ediff evil-cleverparens evil-args evil-anzu eval-sexp-fu emr elisp-slime-nav editorconfig dumb-jump dotenv-mode diminish devdocs define-word column-enforce-mode clean-aindent-mode centered-cursor-mode auto-highlight-symbol auto-compile aggressive-indent ace-link ace-jump-helm-line)))
- (go :variables
-     godoc-at-point-function 'godoc-gogetdoc
-     go-use-golangci-lint t
-     go-format-before-save t
-     go-tab-width 2
-     )
- (python :variables python-tab-width 2)
- (ibuffer :variables ibuffer-group-buffers-by 'projects)
 )
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
