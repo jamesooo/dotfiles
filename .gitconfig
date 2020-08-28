@@ -1,7 +1,5 @@
 [help]
 	autocorrect = 1
-[push]
-	default = origin
 [alias]
 	st = status
 	co = checkout
