@@ -61,7 +61,10 @@ This function should only modify configuration layer settings."
      restclient
      ruby
      rust
-     (shell :variables close-window-with-terminal t)
+     (shell :variables
+            close-window-with-terminal t
+            shell-default-shell 'vterm
+            )
      shell-scripts
      spell-checking
      sql
