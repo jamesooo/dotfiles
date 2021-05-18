@@ -10,3 +10,5 @@
 	restart = reset --hard HEAD
 	undo-commit = reset --soft HEAD^
 
+[commit]
+	gpgsign = true

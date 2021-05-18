@@ -3,7 +3,7 @@ DOTFILES=$HOME/dotfiles
 
 # SPACEMACS
 ## install spacemacs
-python -m pip install --user \
+/usr/bin/env python3 -m pip install --user \
        python-language-server[all] \
        pyls-isort \
        pyls-mypy \
@@ -18,7 +18,7 @@ ln -s $DOTFILES/.spacemacs $HOME/.spacemacs
 
 # install libtool, libvterm, and cmake for vterm to work
 # i jump from os to os a lot (though i generally prefer arch)
-# so some catches to install vterm requirements everywhere
+# so some ifs to install vterm requirements everywhere
 # just make sure you have sudo ;)
 if [ -f /etc/arch-release ]; then
     sudo pacman -Syu \
@@ -36,6 +36,11 @@ elif [ -f /etc/lsb-release ]; then
          libtool \
          libvterm-bin \
          libvterm-dev \
+         cmake
+elif [ -f /usr/local/bin/brew ]; then
+    brew install \
+         libtool \
+         libvterm \
          cmake
 fi
 
